@@ -1,0 +1,43 @@
+.mat-card-live{
+  border: 1px solid #CFD8DC;
+  border-radius: 4px 3px 6px / 2px 4px;
+  margin: 5px;
+}
+.mat-chip-date{
+  background-color: #CFD8DC;
+  color: black !important;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+.cardHeader{
+  padding: 0;
+  margin-bottom: 10px;
+}
+.spinner{
+  margin: 0 auto;
+}
+.title{
+  font-size: 1.3rem;
+}
+.description{
+  color: #787878;
+}
+.iconCheck{
+  color: #CFD8DC;
+}
+.iconCheck:hover{
+  color: #75ff78;
+}
+.iconCheckDone{
+  color: #75ff78;
+}
+.iconCheckDone:hover{
+  color: #CFD8DC;
+}
+.btnCheck{
+  color: #75ff78;
+}
+

@@ -1,0 +1,13 @@
+.login{
+  height: 100vh;
+}
+.loginContent{
+  width: 370px;
+  height: 400px;
+  background-color: #ecf5f9;
+  border-radius: 15px;
+  box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
+}
+.inputLogin{
+  width: 80%;
+}

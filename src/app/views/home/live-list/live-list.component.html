@@ -1,0 +1,87 @@
+<mat-tab-group mat-align-tabs="start" style="padding-top: 40px; padding-left: 2%; padding-right: 2%;">
+    <mat-tab label="Em aberto">
+      <mat-paginator [length]="paginationTasks.total" style="padding-right: 2%"
+                     [pageSize]=" paginationTasks.per_page"
+                    (page)="getPerPage($event)">
+      </mat-paginator>
+        <div fxLayout="row wrap" fxLayoutAlign="start" style="padding-right: 2%">
+          <ng-container
+              *ngFor="let task of openTaks" style="margin: 0.5%;">
+                <mat-card class="example-card mat-card-live"
+                fxFlex="0 1 calc(33.3% - 11px)"
+                fxFlex.lt-md="0 1 calc(50% - 11px)"
+                fxFlex.lt-sm="100%">
+                  <div fxLayout="row center" fxLayoutAlign="space-between center" class="cardHeader">
+                    <span class="title">{{ task.title }}</span>
+                    <div>
+                      <span class="mat-chip-date">{{ task.created_at | localDate }}</span>
+                      <span  *ngIf="task.priority === 1" class="mat-chip-date"  style="margin-left: 5px; background-color: red; color: white !important;">Alta</span>
+                      <span  *ngIf="task.priority === 2"class="mat-chip-date" style="margin-left: 5px; background-color: cornflowerblue; color: white !important;">Média</span>
+                      <span  *ngIf="task.priority === 3"class="mat-chip-date" style="margin-left: 5px; background-color: coral; color: white !important;">Baixa</span>
+                    </div>
+
+                  </div>
+
+                    <mat-card-content>
+                      <p class="description">
+                        {{task.description}}
+                      </p>
+                    </mat-card-content>
+                  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                      <button mat-button (click)="editar(task)" color="primary"><mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon></button>
+                      <button mat-button (click)="deleteTask(task.id)" color="warn"><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon></button>
+                    </div>
+                    <button mat-button (click)="doneTask(task.id)" class="btnCheck"><mat-icon aria-hidden="false" class="iconCheck">check_circle</mat-icon></button>
+
+                  </mat-card-actions>
+                </mat-card>
+
+            </ng-container>
+        </div>
+      <mat-paginator [length]="paginationTasks.total || 0" style="padding-right: 2%"
+                     [pageSize]=" paginationTasks.per_page || 15"
+                     (page)="getPerPage($event)">
+      </mat-paginator>
+    </mat-tab>
+    <mat-tab label="Realizadas">
+      <mat-paginator [length]="paginationDone.total" style="padding-right: 2%"
+                     [pageSize]=" paginationDone.per_page"
+                     (page)="getDonePerPage($event)">
+      </mat-paginator>
+      <div fxLayout="row wrap" fxLayoutAlign="start" style="padding-right: 2%">
+        <ng-container
+          *ngFor="let task of doneTasks" style="margin: 0.5%;">
+          <mat-card class="example-card mat-card-live"
+                    fxFlex="0 1 calc(33.3% - 11px)"
+                    fxFlex.lt-md="0 1 calc(50% - 11px)"
+                    fxFlex.lt-sm="100%">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="cardHeader">
+              <span class="title">{{ task.title }}</span>
+              <div>
+                <span class="mat-chip-date">{{ task.created_at | localDate }}</span>
+                <span  *ngIf="task.priority === 1" class="mat-chip-date"  style="margin-left: 5px; color: white !important;">Alta</span>
+                <span  *ngIf="task.priority === 2"class="mat-chip-date" style="margin-left: 5px; color: white !important;">Média</span>
+                <span  *ngIf="task.priority === 3"class="mat-chip-date" style="margin-left: 5px; color: white !important;">Baixa</span>
+              </div>
+
+            </div>
+
+            <mat-card-content>
+              <p class="description">
+                {{task.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+              <button mat-button style=" font-size: 12px">Concluída em: {{ task.finished_date | localDate }}</button>
+            </mat-card-actions>
+          </mat-card>
+
+        </ng-container>
+      </div>
+      <mat-paginator [length]="paginationDone.total" style="padding-right: 2%"
+                     [pageSize]=" paginationDone.per_page"
+                     (page)="getDonePerPage($event)">
+      </mat-paginator>
+    </mat-tab>
+</mat-tab-group>

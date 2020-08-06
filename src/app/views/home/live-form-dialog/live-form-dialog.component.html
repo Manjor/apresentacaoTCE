@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Cadastrar Tarefa</h1>
+<div>
+  <form style="width: 100%; margin: 0 auto" [formGroup]="taskForm" class="loginContent" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="createTask()">
+    <input type="text" formControlName="id" [(ngModel)]="task.id" hidden>
+    <mat-form-field class="example-form-field inputTask">
+      <mat-label>Titulo</mat-label>
+      <input required formControlName="title" [(ngModel)]="task.title" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field inputTask">
+      <mat-label>Descrição</mat-label>
+      <textarea required formControlName="description" [(ngModel)]="task.description" matInput></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field inputTask">
+      <mat-label>Prioridade</mat-label>
+      <mat-select required formControlName="priority" [(ngModel)]="task.priority">
+        <mat-option [value]="1">Alta</mat-option>
+        <mat-option [value]="2">Média</mat-option>
+        <mat-option [value]="3">Baixa</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="start">
+      <button type="button" color="warn" mat-button (click)="closeForm()">Cancelar</button>
+      <button type="submit" color="primary" mat-button >Confimar</button>
+    </div>
+  </form>
+
+</div>
+

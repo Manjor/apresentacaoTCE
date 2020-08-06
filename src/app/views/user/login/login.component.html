@@ -1,0 +1,17 @@
+<div class="login" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="userForm" class="loginContent" fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="login()">
+      <img src="./src/assets/to-do.png" alt="">
+      <h2>Lista de Tarefas</h2>
+      <mat-form-field class="example-form-field inputLogin">
+        <mat-label>Email</mat-label>
+        <input required formControlName="email" matInput type="email">
+      </mat-form-field>
+      <mat-form-field class="example-form-field inputLogin">
+        <mat-label>Senha</mat-label>
+        <input required formControlName="password" matInput type="password">
+      </mat-form-field>
+      <div>
+        <button type="submit" mat-raised-button color="primary">Entrar</button>
+      </div>
+    </form>
+</div>
